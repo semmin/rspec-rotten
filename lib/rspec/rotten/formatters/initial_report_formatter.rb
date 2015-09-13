@@ -1,4 +1,4 @@
-require 'rspec/core/formatters/json_formatter'
+require 'rspec/core/formatters'
 module Rspec
   module Rotten
     module Formatters

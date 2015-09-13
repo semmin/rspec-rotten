@@ -1,4 +1,4 @@
-require 'rspec/core/formatters/json_formatter'
+require 'rspec/core/formatters'
 require 'json'
 require 'rspec/rotten/example_store'
 
