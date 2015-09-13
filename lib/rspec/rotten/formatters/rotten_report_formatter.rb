@@ -5,7 +5,7 @@ require 'rspec/rotten/example_store'
 module Rspec
   module Rotten
     module Formatters
-      class UpdateReportFormatter
+      class RottenReportFormatter
         RSpec::Core::Formatters.register self, :example_passed, :example_failed, :example_pending, :close
 
         def initialize(output)
