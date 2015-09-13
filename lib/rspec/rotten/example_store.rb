@@ -6,9 +6,8 @@ module Rspec
     class ExampleStore
       attr_accessor :file_path, :records
 
-      # put file path in a config
       def initialize()
-        @file_path = Rails.root.join('output.json')
+        @file_path = Rspec::Rotten::Configuration.results_file
         @records = JSON.parse(read_example_data)
       end
 

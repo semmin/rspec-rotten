@@ -1,1 +1,5 @@
 require "rspec/rotten/version"
+require "rspec/rotten/example_store"
+require "rspec/rotten/configuration"
+require "rspec/rotten/formatters/initial_report_formatter"
+require "rspec/rotten/formatters/update_report_formatter"
