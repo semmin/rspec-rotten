@@ -1,4 +1,5 @@
 require 'json'
+require 'time'
 require 'rspec/core/formatters/console_codes'
 
 module Rspec
@@ -28,7 +29,7 @@ module Rspec
 
       # use config for date
       def rotten
-        @rotten ||= @records.select {|x| x['date'] < Time.now - 1.year }
+        @rotten ||= @records.select {|x| x['date'] < Time.now() - Rspec::Rotten::Configuration.time_to_rotten }
       end
 
       def notify_rotten
