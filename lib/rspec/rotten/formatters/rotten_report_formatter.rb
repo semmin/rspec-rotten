@@ -43,8 +43,6 @@ module Rspec
           end
         end
 
-        # write into a file
-        # generate a report into STDOUT what specs haven't failed for a year
         def close(notification)
           @store.save
           @output << @store.notify_rotten if @store.rotten.any?
