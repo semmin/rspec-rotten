@@ -40,22 +40,30 @@ test runs, and, most importantly, _time period after which specs will be conside
 "rotten"_, given they didn't change status(failed/passed/became pending):
 
 ```ruby
-# config/initializers/rspec-rotten.rb
+# spec/support/rspec-rotten.rb
 Rspec::Rotten::Configuration.configure do |config|
   config.results_file = Rails.root.join('output.json')
   config.time_to_rotten = 1.year
 end
-```
 
-Also add this line to RSpec config in spec_helper/rails_helper:
+# register custom formatter with RSpec
+Rspec::Rotten::Configuration.register_formatter
+```
+The line above will take over default rspec formatter,
+so you will have to register it again:
 
 ```ruby
 # spec/rails_helper.rb
 RSpec.configure do |config|
   ...
-  config.add_formatter(Rspec::Rotten::Formatters::RottenReportFormatter)
+  config.add_formatter(Rspec::Rotten::Formatters::ProgressFormatter)
   ...
 end
+```
+OR just add this line to the `.rspec` (file with rspec default run options):
+
+```
+-f p
 ```
 
 ### Step 3
@@ -63,7 +71,7 @@ end
 Run **the entire suite** to genreate initial spec report:
 
 ```
-rake spec
+rspec spec/
 ```
 _**NOTE:**_ This will create the report that will reflect the status of your specs,
 and will be updated every time you run specs. It's recommended to check this file
